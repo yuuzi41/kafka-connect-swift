@@ -1,0 +1,4 @@
+OpenStack Swift Sink Connector for Kafka Connect
+
+tested on saio, tempauth.
+
