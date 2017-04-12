@@ -1,0 +1,39 @@
+group 'kafka-connect-swift'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+    }
+}
+
+apply plugin: 'eu.appsatori.fatjar'
+
+fatJar {
+    baseName = project.name + '-all'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.apache.kafka:kafka_2.11:0.10.2.0'
+    compileOnly 'org.apache.kafka:connect-runtime:0.10.2.0'
+    compile 'org.javaswift:joss:0.9.10'
+
+    testCompile 'org.apache.kafka:kafka_2.11:0.10.2.0'
+    testCompile 'org.apache.kafka:connect-runtime:0.10.2.0'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.scalatest:scalatest_2.11:2.2.4'
+}
+
